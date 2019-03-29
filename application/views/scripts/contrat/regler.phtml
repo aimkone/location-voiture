@@ -1,0 +1,19 @@
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<?php
+$this->title = "regler un contrat";
+$this->headTitle($this->title);
+
+?>
+<div style="border:2px solid #DDDDDD;">
+<p>Êtes-vous sûr de changer l'etat de cette contrat de non_regler à regler?
+</p>
+<form action="<?php echo $this->url(array('action'=>'regler')); ?>" method="post">
+<div>
+<div>
+    <input type="hidden" name="id" value="<?php echo $this->contrat['id']; ?>" />
+    <input type="submit" name="regler" value="reg"/>
+    <input type="submit" name="regler" value="n-reg"/>
+</div>
+</div>
+</form>
+</div>

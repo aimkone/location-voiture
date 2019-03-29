@@ -1,0 +1,138 @@
+@CHARSET "UTF-8";
+ 
+ .bar{
+ background-color:black;
+ 
+ width:100%;
+ height:60px;
+ }
+input{
+	width:160px;
+
+color:green;
+border:2px solid #DDDDDD;
+
+	
+	}
+	#back{
+	background-image:url(http://www.downloadfreebackgrounds.net/backgrounds/black-wood-background.jpg);
+	}
+	
+label{
+	
+	color:black;
+	
+	}
+	a{
+	
+	text-decoration: none;
+	
+	}
+	a:hover{
+	color:red;
+	
+	
+	}
+	.headlink{
+	color:white;
+	}
+	
+
+	#selectC,#selectV{
+
+	border:1px solid #DDDDDD;
+	
+width:160px;
+	}
+	
+	#scontrat{
+	width:61px;
+	border:1px solid #DDDDDD;
+	-moz-border-radius: 8px;
+	}
+	
+	#fcontrat{
+position:relative;
+left:300px;
+top:22px;
+	width: auto;;
+	border:2px solid #DDDDDD;
+	-moz-border-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	background-color:#EBF4FB;
+	}
+	
+	.left{
+	float:left; 
+	}
+	.select{
+	
+	
+	}
+	.inselect{
+	
+
+	
+	}
+	.head{
+	-webkit-border-top-right-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+	-moz-border-radius-topright: 8px;
+	-moz-border-radius-topleft: 8px;
+	background: url(../images/bg_th.gif)  repeat-x;
+	color:white;
+	text-align:center;
+	}
+	.center{
+	position:absolute;
+	}
+	#boutonenvoyer{
+	
+	text-color:black;
+	}
+	.alignement{
+	padding:10px;
+background:#107FEF;
+	position:relative;
+	width:auto;
+	float:left;
+	border-left:1px solid #DDDDDD;
+
+	}
+	.menu{
+
+	height:40px;
+	width:auto;
+	}
+	
+	.content{
+	margin-top:5px;
+	
+	background-color:white;
+	border:1px solid #DDDDDD;
+	min-height:600px;
+	
+	}
+	.login{
+	padding:20px;
+	float:right;
+	color:white;
+	}
+	.ajoute{
+	background:#107FEF;  
+	color:white;
+	}
+	.index{
+	position:relative;
+	text-align:center;
+	}
+	.essai{
+background-color:red;
+	}
+	.envelope{
+		padding:10px;
+	}
+	

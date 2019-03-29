@@ -1,0 +1,115 @@
+ <script type="text/javascript" src="/location/public/jquery/pagination/paging.js"></script>
+ <script type="text/javascript" src="/location/public/jquery/pagination/sortable.js"></script>
+ <link rel="stylesheet" type="text/css" href="/location/public/css/styleAd.css" />
+ <style type="text/css">    
+            .pg-normal {
+                color: black;
+                font-weight: normal;
+                text-decoration: none;    
+                cursor: pointer;    
+            }
+            .pg-selected {
+                color: black;
+                font-weight: bold;        
+                text-decoration: underline;
+                cursor: pointer;
+            }
+            
+
+        </style> 
+  <div class="add"> 
+  <table border="1px">
+  
+  <tr>
+    <td style="border: none;"><a class="link" href="<?php echo $this->url(array('controller'=>'contrat','action'=>'ajouter'));?>"><img src="/location/public/images/Add.png" width="30" height="30" alt="ADD" title="Ajouter"/></a></td>
+    <td style="border: none;"><a class="link" href="<?php echo $this->url(array('controller'=>'contrat','action'=>'ajouter'));?>">Ajouter une contrat</td>
+  </tr>
+</table>
+</div>
+
+
+ 
+  
+
+ <br/>
+   <?php 
+$id = array();
+$i=1;
+$t=1;
+$diff =new Application_Model_Contrat();
+?>  
+
+<center>
+<table id="results" class="sortable">
+    <tr>
+    	<th style="color:white;">Numero</th>
+        <th>Client</th>
+        <th>Voiture</th>
+        <th>date_debut</th>
+        <th>date_fin</th>
+          
+          <th>nbjrrs</th>
+        <th>prix (en DH)</th>
+        <th>etat</th>
+        <th colspan="3" class="unsortable">Actions</th>
+      
+       
+    </tr>
+<?php $dnow=Zend_Date::now();?>
+<?php foreach($this->contrat as $contrat) : ?>
+<?php $id[$i++]=$this->escape($contrat->client_id);?>
+<?php 
+$i=1;
+$t=-$t;
+if($t==-1){
+	$p='#A6C0BC';
+}else{
+	$p='#C0E6E1';
+}
+
+?>
+    <tr bgcolor="<?php echo $p;?>">
+    	<td><?php echo $this->escape($contrat->id);?>
+        <td><a href="<?php echo $this->url(array('controller'=>'client','action'=>'obtenir','id'=>$contrat->client_id));?>"><?php echo $this->escape($contrat->client);?></a></td>
+        <td><a href="<?php echo $this->url(array('controller'=>'voiture','action'=>'obtenir','id'=>$contrat->voiture_id));?>"><?php echo $this->escape($contrat->voiture);?></a></td>
+          <td><?php echo $this->escape($contrat->date_debut);?></td>
+         <td><?php echo $this->escape($contrat->date_fin);?></td>
+         <td><center><?php echo $this->escape($contrat->nb_jour);?></center></td>
+       
+         <td><?php echo $this->escape($contrat->prix);?></td>
+         <td>
+  <?php if($contrat->etat==0){ ?>       
+<a href="
+<?php echo $this->url(array('controller'=>'contrat','action'=>'regler','id'=>$contrat->id));?>"> non-regler</a>
+</td>
+  <?php
+  ;} else {?>
+  <a href="
+  <?php   
+  echo $this->url(array('controller'=>'contrat','action'=>'regler','id'=>$contrat->id));?>">regler</a>     
+       <?php ;}?> 
+        <td>
+            <a href="<?php echo $this->url(array('controller'=>'contrat','action'=>'modifier','id'=>$contrat->id));?>"><img src="/location/public/images/Edit.png" width="30" height="30" alt="modifier" title="modifier"/></a></td>
+          <td>  <a href="<?php echo $this->url(array('controller'=>'contrat','action'=>'supprimer', 'id'=>$contrat->id));?>"><img src="/location/public/images/Delete.png" width="30" height="30" alt="del" title="supprimer"/></a></td>
+        	<td><a href="<?php echo $this->url(array('controller'=>'contrat','action'=>'imprimer','id'=>$contrat->id));?>"><img src="/location/public/images/Print.png" width="30" height="30" alt="print" title="imprimer"/></a>
+        	
+        </td>
+       
+    </tr>
+
+<?php endforeach; ?>
+</table>
+<center>
+ <div id="pageNavPosition"></div>
+ 
+  
+ </center>
+</center>
+<script type="text/javascript">
+ var pager = new Pager('results', 10); 
+ pager.init(); 
+ pager.showPageNav('pager', 'pageNavPosition'); 
+ pager.showPage(1);
+
+</script>
+

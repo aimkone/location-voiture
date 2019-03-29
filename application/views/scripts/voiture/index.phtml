@@ -1,0 +1,69 @@
+<link rel="stylesheet" type="text/css" href="/location/public/css/styleAd.css" />
+   <script type="text/javascript" src="/location/public/jquery/pagination/paging.js"></script> 
+    <script type="text/javascript" src="/location/public/jquery/pagination/sortable.js"></script>
+    <style type="text/css">    
+            .pg-normal {
+                color: black;
+                font-weight: normal;
+                text-decoration: none;    
+                cursor: pointer;    
+            }
+            .pg-selected {
+                color: black;
+                font-weight: bold;        
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        </style> 
+  <div class="add"> 
+  <table >
+  
+  <tr>
+    <td style="border: none;"><a class="link" href="<?php echo $this->url(array('controller'=>'voiture','action'=>'ajouter'));?>"><img src="/location/public/images/Add.png" width="30" height="30" alt="ADD" title="Ajouter"/></a></td>
+    <td style="border: none;">Ajouter une voiture</td>
+  </tr>
+</table>
+</div>
+ <br/> 
+ <center>
+<table id="results" class="sortable">
+    <tr>
+        <th>voiture modele</th>
+        <th>matricule</th>
+        <th>couleur</th>
+        <th>disponibilite</th>
+         <th colspan="2" class="unsortable">Actions</th>
+        
+    </tr>
+<?php foreach($this->voiture as $voiture) : ?>
+    <tr>
+        <td><?php echo $this->escape($voiture->modele);?></td>
+        <td><?php echo $this->escape($voiture->matricule);?></td>
+          <td><?php echo $this->escape($voiture->couleur);?></td>
+          <?php if($voiture->disponible==0){?>
+          <td style="color:red;">non-disponible</td>
+          <?php }else{?>
+          <td style="color:green;">disponible</td>
+          <?php }?>
+        <td>
+            <a href="<?php echo $this->url(array('controller'=>'voiture','action'=>'modifier','id'=>$voiture->id));?>"><img src="/location/public/images/Edit.png" width="30" height="30" alt="modifier" title="modifier"/></a>  </td>
+            <td><a href="<?php echo $this->url(array('controller'=>'voiture','action'=>'supprimer', 'id'=>$voiture->id));?>"><img src="/location/public/images/Delete.png" width="30" height="30" alt="del" title="supprimer"/></a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
+<center>
+ <div id="pageNavPosition"></div>
+ 
+  
+ </center>
+
+<script type="text/javascript">
+ var pager = new Pager('results', 10); 
+ pager.init(); 
+ pager.showPageNav('pager', 'pageNavPosition'); 
+ pager.showPage(1);
+
+</script>
+
+</center>

@@ -1,0 +1,47 @@
+<link rel="stylesheet" type="text/css" href="/location/public/css/tableAv2
+.css" />
+<br>
+<center>
+<table>
+    <tr>
+        <th>nom</th>
+        <th>prenom</th>
+        <th>cin</th>
+        <th>adresse</th>
+        <th>telephone</th>
+        <th></th>
+    </tr>
+    
+
+    <tr>
+        <td><?php echo $this->client['nom'];?></td>
+        <td><?php echo $this->client['prenom'];?></td>
+          <td><?php echo $this->client['cin'];?></td>
+         <td><?php echo $this->client['adresse'];?></td>
+        <td><?php echo  $this->client['telephone'];?></td>
+        <td><a href="<?php echo $this->url(array('controller'=>'client','action'=>'modifier','id'=>$this->client['id']));?>">Modifier</a></td>
+        
+    </tr>
+
+
+
+
+
+</table>
+</center>
+<?php 
+$pdf=new Zend_Pdf();
+$pdf->pages=array_reverse($pdf->pages);
+$page1=$pdf->newPage(Zend_Pdf_Page::SIZE_A4);
+$style = new Zend_Pdf_Style();
+$style->setFillColor(new Zend_Pdf_Color_GrayScale(0.5));
+$style->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA), 8);
+$page1->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA), 36);
+$page1->saveGS($style);
+$page1->drawText("hello", 33,44);
+
+$pdf->pages[]=$page1;
+
+//$pdf->save("d");
+
+?>

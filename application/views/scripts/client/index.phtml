@@ -1,0 +1,75 @@
+<link rel="stylesheet" type="text/css" href="/location/public/css/styleAd.css" />
+ <script type="text/javascript" src="/location/public/jquery/pagination/paging.js"></script>
+ <script type="text/javascript" src="/location/public/jquery/pagination/sortable.js"></script>
+ <style type="text/css">    
+            .pg-normal {
+                color: black;
+                font-weight: normal;
+                text-decoration: none;    
+                cursor: pointer;    
+            }
+            .pg-selected {
+                color: black;
+                font-weight: bold;        
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        </style>
+  
+  <div class="add"> 
+  <table border="1px">
+  
+  <tr>
+    <td style="border: none;"><a class="link" href="<?php echo $this->url(array('controller'=>'client','action'=>'ajouter'));?>"><img src="/location/public/images/Add.png" width="30" height="30" alt="ADD" title="Ajouter"/></a></td>
+   <td style="border: none;">Ajouter un client</td>
+  </tr>
+  
+</table>
+<center>
+</div>
+ <div class="index"> 
+ <br> 
+ <center>
+ 
+<table id="results"class="sortable">
+    <tr>
+        <th>nom</th>
+        <th>prenom</th>
+        <th>cin</th>
+        <th>adresse</th>
+        <th>telephone</th>
+        <th colspan="2" class="unsortable">ll</th>
+        
+    </tr>
+<?php foreach($this->client as $client) : ?>
+    <tr>
+        <td><?php echo $this->escape($client->nom);?></td>
+        <td><?php echo $this->escape($client->prenom);?></td>
+          <td><?php echo $this->escape($client->cin);?></td>
+         <td><?php echo $this->escape($client->adresse);?></td>
+        <td><?php echo $this->escape($client->telephone);?></td>
+        <td>
+            <a href="<?php echo $this->url(array('controller'=>'client','action'=>'modifier','id'=>$client->id));?>"><img src="/location/public/images/Edit.png" width="30" height="30" alt="modifier" title="modifier"/></a> </td>
+        <td>
+            <a href="<?php echo $this->url(array('controller'=>'client','action'=>'supprimer','id'=>$client->id));?>"><img src="/location/public/images/Delete.png" width="30" height="30" alt="supprimer" title="supprimer"/></a> </td>
+          
+    </tr>
+
+
+
+
+<?php endforeach; ?>
+</table></center>
+<center>
+ <div id="pageNavPosition"></div>
+ 
+  
+ </center> 
+<script type="text/javascript">
+ var pager = new Pager('results', 10); 
+ pager.init(); 
+ pager.showPageNav('pager', 'pageNavPosition'); 
+ pager.showPage(1);
+
+</script>
+</center>

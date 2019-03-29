@@ -1,0 +1,66 @@
+<?php
+
+$this->title = "Ajouter une nouvelle voiture";
+$this->headTitle($this->title);
+?>
+<div class="center">
+<div id="fcontrat">
+
+<form action="<?php echo $this->url(array('controller'=>'voiture','action'=>'ajouter'));?>"
+method="post">
+
+ 
+
+<div class="select">
+<div class="head">Nouvelle voiture
+</div>
+<table>
+<tr> 
+<td><label ><?php echo $this->form->modele->getLabel();?></label></td>
+<td><?php echo $this->form->modele->renderViewHelper();?></td>
+</tr>
+<tr>
+<td><label><?php echo $this->form->matricule->getLabel();?></label></td>
+<td><?php echo $this->form->matricule->renderViewHelper();?></td>
+</tr>
+<tr>
+<td><label><?php echo $this->form->couleur->getLabel();?></label></td>
+<td><?php echo $this->form->couleur->renderViewHelper();?></td>
+</tr>
+<tr>
+<td><label><?php echo $this->form->vidange->getLabel();?></label></td>
+<td><?php echo $this->form->vidange->renderViewHelper();?></td>
+</tr>
+<tr>
+<td><label><?php echo $this->form->date_assur->getLabel();?></label></td>
+<td><?php echo $this->form->date_assur->renderViewHelper();?></td>
+</tr>
+<tr>
+<td><label><?php echo $this->form->date_change->getLabel();?></label></td>
+<td><?php echo $this->form->date_change->renderViewHelper();?></td>
+</tr>
+<tr>
+<td><label><?php echo $this->form->nb_cylindre->getLabel();?></label></td>
+<td><?php echo $this->form->nb_cylindre->renderViewHelper();?></td>
+</tr>
+<tr>
+<td><label><?php echo $this->form->nb_porte->getLabel();?></label></td>
+<td><?php echo $this->form->nb_porte->renderViewHelper();?></td>
+</tr>
+<tr>
+<td><label><?php echo $this->form->prix->getLabel();?></label></td>
+<td><?php echo $this->form->prix->renderViewHelper();?></td>
+</tr>
+<tr>
+<td></td>
+
+<td><?php echo $this->form->envoyer->renderViewHelper();?></td>
+</tr>
+<?php echo $this->err;?>
+</table>
+
+</div>
+</form>
+</div>
+<p><a href="<?php echo $this->url(array('Controller'=>'index','action'=>'index'));?>">&lt;--retour</a></p>
+</div>

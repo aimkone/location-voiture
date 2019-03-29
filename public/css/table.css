@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+td, th
+{
+	background-color:#97CBFF;
+color:black;	
+}
+th
+{
+background-color:#8DBEEF;
+color:white;
+}
+table{
+	
+	
+	border:10px solid #8DBEEF;
+	}

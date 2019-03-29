@@ -1,0 +1,11 @@
+<?php 
+session_start();
+
+$_SESSION['voiture']=$this->voiture;
+$_SESSION['contrat']=$this->contrat;
+$_SESSION['client']=$this->client;
+
+
+
+?>
+<a href="/location/public/pdf.php">telechage pdf</a>

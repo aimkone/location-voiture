@@ -1,0 +1,21 @@
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<?php
+$this->title = "Supprimer un contrat";
+$this->headTitle($this->title);
+
+?>
+<div style="border:2px solid #DDDDDD;">
+<p>Êtes-vous sûr de vouloir supprimer cette contrat de votre liste de contrat?
+</p>
+<form action="<?php echo $this->url(array('action'=>'supprimer')); ?>" method="post">
+<div>
+<div>
+    <input type="hidden" name="id" value="<?php echo $this->contrat['id']; ?>" />
+    <input type="submit" name="supprimer" value="Oui" />
+    <input type="submit" name="supprimer" value="Non" />
+</div>
+</div>
+</form>
+</div>
+
+

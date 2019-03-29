@@ -1,0 +1,37 @@
+<link rel="stylesheet" type="text/css" href="/location/public/css/tableAv2.css" />
+<center> 
+<br>  
+<table>
+    <tr>
+        <th>modele</th>
+        <th>matricule</th>
+        <th>nb_cylindre</th>
+        <th>nb_portes</th>
+           <th>couleur</th>
+           <th>assurance</th>
+        <th>prix de location</th>
+        <th> </th>
+   
+    </tr>
+    
+
+    <tr>
+        <td><center><?php echo $this->voiture['modele'];?></center></td>
+        <td><center><?php echo $this->voiture['matricule'];?></center></td>
+          <td><center><?php echo $this->voiture['nb_cylindre'];?></center></td>
+         <td><center><?php echo $this->voiture['nb_porte'];?></center></td>
+        <td><center><?php echo $this->voiture['couleur'];?></center></td>
+         <td><center><?php echo $this->voiture['date_assur'];?></center></td>
+        <td><center><?php echo $this->voiture['prix'];?></center></td>
+        <td><a href="<?php echo $this->url(array('controller'=>'voiture','action'=>'modifier','id'=>$this->voiture['id']));?>">Modifier</a></td>
+         
+    </tr>
+    
+    
+
+
+
+
+
+</table>
+</center>

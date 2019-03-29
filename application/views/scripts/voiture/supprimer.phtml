@@ -1,0 +1,19 @@
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<?php
+$this->title = "Supprimer une voiture";
+$this->headTitle($this->title);
+
+?>
+
+<p>Êtes-vous sûr de vouloir supprimer la voiture
+    '<?php echo $this->escape($this->voiture['model']); ?> de matricule
+    <?php echo $this->escape($this->voiture['matricule']); ?>' de votre liste des voitures ?
+</p>
+<form action="<?php echo $this->url(array('action'=>'supprimer')); ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo $this->voiture['id']; ?>" />
+    <input type="submit" name="supprimer" value="Oui" />
+    <input type="submit" name="supprimer" value="Non" />
+</div>
+</form>
+

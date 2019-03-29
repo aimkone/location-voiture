@@ -1,0 +1,191 @@
+<link rel="stylesheet" type="text/css" href="/location/public/css/styleAd.css" />
+ <script type="text/javascript" src="/location/public/jquery/pagination/paging.js"></script>
+ <script type="text/javascript" src="/location/public/jquery/jsapi/jsapi.js"></script>
+ <style type="text/css">    
+            .pg-normal {
+                color: black;
+                font-weight: normal;
+                text-decoration: none;    
+                cursor: pointer;    
+            }
+            .pg-selected {
+                color: black;
+                font-weight: bold;        
+                text-decoration: underline;
+                cursor: pointer;
+            }
+            
+
+        </style> 
+ <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Mois');
+        data.addColumn('number', 'chiffre d\'affaire mensuel');
+        data.addRows(12);
+        data.setValue(0, 0, 'Janvier');
+        data.setValue(0, 1,<?php foreach($this->vStatJ as $vStatJ) :if($vStatJ->chA != null){echo $this->escape($vStatJ->chA);} else echo 0;?> 
+        <?php endforeach; ?>
+        );
+       
+        data.setValue(1, 0, 'Fevrier');
+        data.setValue(1, 1, <?php foreach($this->vStatF as $vStatF) :if($vStatF->chA != null){echo $this->escape($vStatF->chA);} else echo 0;?> 
+        <?php endforeach; ?>);
+        data.setValue(2, 0, 'Mars');
+        data.setValue(2, 1, <?php foreach($this->vStatM as $vStatM) :if($vStatM->chA != null){echo $this->escape($vStatM->chA);} else echo 0;?> 
+        <?php endforeach; ?>);
+        data.setValue(3, 0, 'Avril');
+        data.setValue(3, 1,<?php foreach($this->vStatA as $vStatA) :if($vStatA->chA != null){echo $this->escape($vStatA->chA);} else echo 0;?> 
+        <?php endforeach; ?>);
+        data.setValue(4, 0, 'Mai');
+        data.setValue(4, 1, <?php foreach($this->vStatMy as $vStatMy) :if($vStatMy->chA != null){echo $this->escape($vStatMy->chA);} else echo 0;?> 
+        <?php endforeach; ?>);
+        data.setValue(5, 0, 'Juin');
+        data.setValue(5, 1, <?php foreach($this->vStatJu as $vStatJu) :if($vStatJu->chA != null){echo $this->escape($vStatJu->chA);} else echo 0;?> 
+        <?php endforeach; ?>);
+        data.setValue(6, 0, 'Juillet');
+        data.setValue(6, 1, <?php foreach($this->vStatJul as $vStatJul) :if($vStatJul->chA != null){echo $this->escape($vStatJul->chA);} else echo 0;?> 
+        <?php endforeach; ?>);
+        data.setValue(7, 0, 'Aout');
+        data.setValue(7, 1, <?php foreach($this->vStatAo as $vStatAo) :if($vStatAo->chA != null){echo $this->escape($vStatAo->chA);} else echo 0;?> 
+        <?php endforeach; ?>);
+        data.setValue(8, 0, 'Septembre');
+        data.setValue(8, 1, <?php foreach($this->vStatS as $vStatS) :if($vStatS->chA != null){echo $this->escape($vStatS->chA);} else echo 0;?> 
+        <?php endforeach; ?>);
+        data.setValue(9, 0, 'Octobre');
+        data.setValue(9, 1, <?php foreach($this->vStatO as $vStatO) :if($vStatO->chA != null){echo $this->escape($vStatO->chA);} else echo 0;?> 
+        <?php endforeach; ?>);
+        data.setValue(10, 0, 'Novembre');
+        data.setValue(10, 1, <?php foreach($this->vStatN as $vStatN) :if($vStatN->chA != null){echo $this->escape($vStatN->chA);} else echo 0;?> 
+        <?php endforeach; ?>);
+        data.setValue(11, 0, 'Decembre');
+        data.setValue(11, 1,<?php foreach($this->vStatD as $vStatD) :if($vStatD->chA != null){echo $this->escape($vStatD->chA);} else echo 0;?> 
+        <?php endforeach; ?>);
+
+        var chart2 = new google.visualization.BarChart(document.getElementById('chart_div2'));
+        chart2.draw(data, {width: 900, height: 640, title: 'chiffre d\'affaire mensuel en DH ',
+                          vAxis: {title: 'Mois', titleTextStyle: {color: 'red'}}
+                         });
+      }
+    </script>
+ 
+ 
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task');
+        data.addColumn('number', 'Hours per Day');
+        data.addRows(12);
+        <?php $i=0;$j=0;?>
+        <?php foreach($this->vStat as $vStat) : ?>
+        data.setValue(<?php echo $i; ?>, <?php  echo $j; ?>, '<?php echo $this->escape($vStat->voiture);?>');
+        <?php $j=1 ;?>
+        data.setValue(<?php echo $i; ?>, <?php echo $j; ?>, <?php echo $this->escape($vStat->nbj);?>);
+        <?php $i=$i+1;
+        $j=0;?>
+        <?php endforeach; ?>
+        
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, {width: 450, height: 300, title: 'pourcentage de jours pour chaque voiture'});
+        
+      }
+    </script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task');
+        data.addColumn('number', 'Hours per Day');
+        data.addRows(12);
+        <?php $i=0;$j=0;?>
+        <?php foreach($this->vStatch as $vStatch) : ?>
+        data.setValue(<?php echo $i; ?>, <?php  echo $j; ?>, '<?php echo $this->escape($vStatch->voiture);?>');
+        <?php $j=1 ;?>
+        data.setValue(<?php echo $i; ?>, <?php echo $j; ?>, <?php echo $this->escape($vStatch->nbj);?>);
+        <?php $i=$i+1;
+        $j=0;?>
+        <?php endforeach; ?>
+        
+
+        
+        var chartC = new google.visualization.PieChart(document.getElementById('chart_divC'));
+        chartC.draw(data, {width: 450, height: 300, title: 'pourcentage de chiffre d\'affaire pour chaque voiture'});
+      }
+    </script>
+    
+     <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task');
+        data.addColumn('number', 'Hours per Day');
+        data.addRows(12);
+        <?php $i=0;$j=0;?>
+        <?php foreach($this->cStatch as $cStatch) : ?>
+        data.setValue(<?php echo $i; ?>, <?php  echo $j; ?>, '<?php echo $this->escape($cStatch->client);?>');
+        <?php $j=1 ;?>
+        data.setValue(<?php echo $i; ?>, <?php echo $j; ?>, <?php echo $this->escape($cStatch->nbj);?>);
+        <?php $i=$i+1;
+        $j=0;?>
+        <?php endforeach; ?>
+        
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_divcl'));
+        chart.draw(data, {width: 450, height: 300, title: 'pourcentage de chiffre d\'affaire pour chaque client'});
+      }
+    </script>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task');
+        data.addColumn('number', 'Hours per Day');
+        data.addRows(12);
+        <?php $i=0;$j=0;?>
+        <?php foreach($this->cStatclj as $cStatclj) : ?>
+        data.setValue(<?php echo $i; ?>, <?php  echo $j; ?>, '<?php echo $this->escape($cStatclj->client);?>');
+        <?php $j=1 ;?>
+        data.setValue(<?php echo $i; ?>, <?php echo $j; ?>, <?php echo $this->escape($cStatclj->nbj);?>);
+        <?php $i=$i+1;
+        $j=0;?>
+        <?php endforeach; ?>
+        
+
+        
+        var chartC = new google.visualization.PieChart(document.getElementById('chart_divclj'));
+        chartC.draw(data, {width: 450, height: 300, title: 'pourcentage de jour pour chaque client'});
+      }
+    </script>
+
+
+<table id="resultss">
+<tr><th style="background-image: none;"></th>
+<th style="background-image: none;"></th>
+</tr>
+  
+  <tr>
+    <td><div id="chart_div"></div></td>
+    <td><div id="chart_divC"></div></td>
+  </tr>
+   <tr>
+    <td><div id="chart_divclj"></div></td>
+    <td><div id="chart_divcl"></div></td>
+  </tr>
+</table><center>
+ <div id="pageNavPosition"></div></center>
+<script type="text/javascript">
+ var pager = new Pager('results', 1); 
+ pager.init(); 
+ pager.showPageNav('pager', 'pageNavPosition'); 
+ pager.showPage(1);
+
+</script>
+<div id="chart_div2"></div>

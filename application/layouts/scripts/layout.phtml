@@ -1,0 +1,30 @@
+<link rel="stylesheet" type="text/css" href="/location/public/css/style.css" />
+
+<body bgcolor="#8DBEEF">
+<div class="bar">
+<img alt="car" src="/location/public/images/car.png" width="90" height="60" style="margin-left:06;"/>
+
+<?php if(Zend_Auth::getInstance()->hasIdentity()){ ?>
+<div class="login">[<a href="<?php echo  $this->url(array('controller'=>'login','action'=>'logout'));?>"class="headlink">logout</a>]</div>
+<?php }else{?>
+
+<div class="login">[<a href="<?php echo  $this->url(array('controller'=>'login','action'=>'login'));?>"class="headlink">login</a>]</div>
+<?php }?>
+
+</div>
+<div class="envelope">
+<div class="menu">
+<div class="alignement"><a href="<?php echo  $this->url(array('controller'=>'index','action'=>'index'));?>" class="headlink">&nbsp;&nbsp;acceuil&nbsp;&nbsp;</a></div>
+<div class="alignement"><a href="<?php echo  $this->url(array('controller'=>'client','action'=>'index'));?>"class="headlink">&nbsp;&nbsp;gestion des clients&nbsp;&nbsp;</a></div>
+<div class="alignement"><a href="<?php echo  $this->url(array('controller'=>'contrat','action'=>'index'));?>"class="headlink">&nbsp;&nbsp;gestion des contrats&nbsp;&nbsp;</a></div>
+<div class="alignement"><a href="<?php echo  $this->url(array('controller'=>'voiture','action'=>'index'));?>"class="headlink">&nbsp;&nbsp;gestion des voitures&nbsp;&nbsp;</a></div>
+<div class="alignement"><a href="<?php echo  $this->url(array('controller'=>'statistic','action'=>'index'));?>"class="headlink">&nbsp;&nbsp;statistiques&nbsp;&nbsp;</a></div>
+
+</div>
+
+
+<div class="content">
+<?php echo $this->layout()->content; ?>
+</div>
+</div>
+</body>

@@ -1,0 +1,19 @@
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<?php
+$this->title = "Supprimer un client";
+$this->headTitle($this->title);
+
+?>
+
+<p>Êtes-vous sûr de vouloir supprimer 
+    '<?php echo $this->escape($this->client['nom']); ?> 
+    <?php echo $this->escape($this->client['prenom']); ?>' de votre liste de clients?
+</p>
+<form action="<?php echo $this->url(array('action'=>'supprimer')); ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo $this->client['id']; ?>" />
+    <input type="submit" name="supprimer" value="Oui" />
+    <input type="submit" name="supprimer" value="Non" />
+</div>
+</form>
+

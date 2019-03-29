@@ -1,0 +1,77 @@
+<link rel="stylesheet" type="text/css" href="/location/public/css/tableAv2.css" />
+<center>
+
+
+
+<?php $dateNow=new Zend_Date(Zend_Date::now()->addDay(7));
+	
+$tit=0;
+?>
+<?php foreach($this->assur as $assur) : ?>
+<?php 
+
+
+if ($assur->date_assur<=$dateNow->toString('yyyy-MM-dd')){?>
+<?php if($tit==0){?>
+<table>
+<TR><Th COLSPAN=4>notification assurance</Th></TR>
+    <tr>
+        <th>id</th>
+        <th COLSPAN=3>date assurence</th>
+        
+    </tr>
+    <?php }?>
+    <tr>
+        <td><?php echo $this->escape($assur->id);?></td>
+        <td><?php echo $this->escape($assur->date_assur);?></td>      
+         <td><a href="<?php echo $this->url(array('controller'=>'voiture','action'=>'obtenir','id'=>$assur->id));?>">voir</a></td> 
+         <td><a href="<?php echo $this->url(array('controller'=>'voiture','action'=>'reglerassur','id'=>$assur->id));?>">regler</a></td>
+          
+    </tr>
+    
+<?php 
+$tit=1;
+}
+endforeach; ?>
+
+
+</table>
+<br>
+<table>
+    <tr>
+     
+        <th>chiffre d'affaires</th>
+   
+    </tr>
+<?php $dateNow=new Zend_Date(Zend_Date::now());?>
+<?php foreach($this->chiffreAf as $ch) : ?>
+
+    <tr>
+        
+        <td style="color:red;"><center><strong><?php echo $this->escape($ch->pr);?> DH</strong></center></td>      
+    </tr>
+    
+<?php 
+
+endforeach; ?>
+</table>
+<br>
+<table>
+    <tr>
+     
+        <th>nombre de jour global</th>
+   
+    </tr>
+
+<?php foreach($this->nbj as $nbj) : ?>
+
+    <tr>
+        
+        <td style="color:red;"><center><strong><?php echo $this->escape($nbj->bj);?> jours</strong></center></td>      
+    </tr>
+    
+<?php 
+
+endforeach; ?>
+</table>
+</center>
